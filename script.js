@@ -97,9 +97,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
   /* ---- expandable peptide cards (accordion) -----------------------------*/
   document.querySelectorAll('.pep-card').forEach(card => {
-    const top = card.querySelector('.pep-card-top');
     const body = card.querySelector('.pep-card-body');
-    top.addEventListener('click', () => {
+    if (!body) return;
+    card.addEventListener('click', (e) => {
+      if (e.target.closest('a')) return;
       const isOpen = card.classList.contains('open');
       // close others in the same group for a tidy single-open accordion
       const group = card.closest('.pep-grid');
