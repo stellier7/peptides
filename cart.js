@@ -91,6 +91,15 @@ const addBtnHtml = (product, extraClass = '') => {
 document.addEventListener('DOMContentLoaded', () => {
   let state = loadState();
 
+  if (!document.querySelector('.cart-fab')) {
+    document.body.insertAdjacentHTML('beforeend', `
+      <button type="button" class="cart-fab" data-open-cart aria-label="Abrir carrito">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M6 6h15l-1.5 9h-12z"/><path d="M6 6 5 3H2"/><circle cx="9" cy="20" r="1.3"/><circle cx="18" cy="20" r="1.3"/></svg>
+        <span class="cart-count" data-cart-count hidden>0</span>
+      </button>
+    `);
+  }
+
   /* ---- inject add buttons from existing catalog markup ----------------*/
   document.querySelectorAll('.pep-card').forEach(card => {
     const name = card.querySelector('h4')?.textContent.trim();
@@ -183,6 +192,7 @@ document.addEventListener('DOMContentLoaded', () => {
   let toastTimer = null;
 
   const openCart = () => {
+    document.dispatchEvent(new Event('lotus:close-menu'));
     overlay.hidden = false;
     drawer.setAttribute('aria-hidden', 'false');
     document.body.classList.add('cart-open');
@@ -199,6 +209,8 @@ document.addEventListener('DOMContentLoaded', () => {
     drawer.setAttribute('aria-hidden', 'true');
     setTimeout(() => { overlay.hidden = true; }, 280);
   };
+
+  document.addEventListener('lotus:close-cart', closeCart);
 
   const showToast = () => {
     toastEl.hidden = false;

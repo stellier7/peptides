@@ -5,11 +5,67 @@
 
 document.addEventListener('DOMContentLoaded', () => {
 
-  /* ---- active nav link -------------------------------------------------*/
+  /* ---- hamburger menu --------------------------------------------------*/
   const here = location.pathname.split('/').pop() || 'index.html';
-  document.querySelectorAll('.nav-links a').forEach(a => {
+  if (!document.querySelector('[data-menu-drawer]')) {
+    document.body.insertAdjacentHTML('beforeend', `
+      <div class="menu-overlay" data-menu-overlay hidden></div>
+      <aside class="menu-drawer" data-menu-drawer aria-hidden="true">
+        <p class="menu-kicker mono">Menú</p>
+        <nav>
+          <ul class="menu-links">
+            <li><a href="index.html">Catálogo</a></li>
+            <li><a href="quiz.html">Ayúdame a elegir</a></li>
+            <li><a href="informacion.html">Información</a></li>
+            <li><a href="contacto.html">Pedidos</a></li>
+          </ul>
+        </nav>
+        <a href="contacto.html" class="btn btn-primary menu-cta">Hacer pedido</a>
+      </aside>
+    `);
+  }
+
+  const menuBtn = document.querySelector('[data-open-menu]');
+  const menuOverlay = document.querySelector('[data-menu-overlay]');
+  const menuDrawer = document.querySelector('[data-menu-drawer]');
+
+  document.querySelectorAll('.menu-links a').forEach(a => {
     if (a.getAttribute('href') === here) a.classList.add('active');
   });
+
+  const openMenu = () => {
+    if (!menuDrawer) return;
+    document.dispatchEvent(new Event('lotus:close-cart'));
+    menuOverlay.hidden = false;
+    menuDrawer.setAttribute('aria-hidden', 'false');
+    menuBtn?.classList.add('is-open');
+    menuBtn?.setAttribute('aria-expanded', 'true');
+    document.body.classList.add('menu-open');
+    requestAnimationFrame(() => {
+      menuOverlay.classList.add('in');
+      menuDrawer.classList.add('in');
+    });
+  };
+
+  const closeMenu = () => {
+    if (!menuDrawer) return;
+    menuOverlay.classList.remove('in');
+    menuDrawer.classList.remove('in');
+    menuBtn?.classList.remove('is-open');
+    menuBtn?.setAttribute('aria-expanded', 'false');
+    document.body.classList.remove('menu-open');
+    menuDrawer.setAttribute('aria-hidden', 'true');
+    setTimeout(() => { menuOverlay.hidden = true; }, 280);
+  };
+
+  menuBtn?.addEventListener('click', () => {
+    menuDrawer.classList.contains('in') ? closeMenu() : openMenu();
+  });
+  menuOverlay?.addEventListener('click', closeMenu);
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && menuDrawer?.classList.contains('in')) closeMenu();
+  });
+  document.addEventListener('lotus:close-menu', closeMenu);
 
   /* ---- scroll reveal (IntersectionObserver) -----------------------------*/
   const revealEls = document.querySelectorAll('.reveal');
@@ -122,10 +178,4 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  /* ---- mobile nav ---------------------------------------------------- */
-  const toggle = document.querySelector('.nav-toggle');
-  const links = document.querySelector('.nav-links');
-  if (toggle && links) {
-    toggle.addEventListener('click', () => links.classList.toggle('mobile-open'));
-  }
 });
