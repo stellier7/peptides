@@ -92,6 +92,30 @@ const PEPTIDES = {
     sku: 'ipamorelin',
     price: 1300,
   },
+  'cjc-ipamorelin': {
+    name: 'CJC sin DAC + Ipamorelin 5/5 mg',
+    blurb: 'Dos péptidos que juntos piden más hormona de crecimiento, en pulsos.',
+    ficha: 'informacion.html#cjc-ipamorelin',
+    catalog: 'index.html#cjc-ipamorelin',
+    sku: 'cjc-ipamorelin',
+    price: 1750,
+  },
+  tesamorelin: {
+    name: 'Tesamorelin · 6 viales',
+    blurb: 'El más documentado para hormona de crecimiento y grasa de la zona media. Unos 2 meses.',
+    ficha: 'informacion.html#tesamorelin',
+    catalog: 'index.html#tesamorelin',
+    sku: 'tesamorelin',
+    price: 9000,
+  },
+  'tesa-ipa-blend': {
+    name: 'Tesamorelin + Ipamorelin',
+    blurb: 'El combo más fuerte de “pide GH” del catálogo, para unos 2 meses.',
+    ficha: 'informacion.html#tesa-ipa-blend',
+    catalog: 'index.html#tesa-ipa-blend',
+    sku: 'tesa-ipa-blend',
+    price: 11000,
+  },
   retatrutide: {
     name: 'Retatrutide',
     blurb: 'El más potente de la línea de peso: tres vías a la vez (apetito, azúcar y energía).',
@@ -117,9 +141,9 @@ const PEPTIDES = {
 const STEPS = {
   start: {
     step: 1,
-    total: 2,
+    total: 3,
     title: '¿Te interesa más belleza o salud?',
-    lead: 'Empezamos por ahí. Después afinamos con una sola pregunta más.',
+    lead: 'Empezamos por ahí. A veces basta con dos preguntas; si hay varios péptidos en esa línea, hacemos una tercera.',
     options: [
       { id: 'beauty', label: 'Belleza', hint: 'Piel, cabello, uñas, verse mejor', next: 'beauty' },
       { id: 'health', label: 'Salud', hint: 'Energía, recuperación, peso, sueño, calma', next: 'health' },
@@ -129,26 +153,81 @@ const STEPS = {
     step: 2,
     total: 2,
     title: 'En belleza, ¿qué te resuena más?',
-    lead: 'Elige la que más se acerque. Puedes cambiar después.',
+    lead: 'Elige la que más se acerque.',
     options: [
       { id: 'hair', label: 'Cabello y uñas', hint: 'Se me cae el pelo o quiero uñas más fuertes', result: ['ghk-cu', 'klow'] },
-      { id: 'skin', label: 'Piel y verse mejor', hint: 'Piel más firme, más pareja, glow', result: ['ghk-cu', 'klow', 'kpv'] },
+      { id: 'skin', label: 'Piel y verse mejor', hint: 'Piel más firme, más pareja, glow', next: 'beauty_form' },
       { id: 'irritation', label: 'Piel irritada', hint: 'Inflamación, piel que arde o se irrita', result: ['kpv', 'ghk-cu', 'klow'] },
       { id: 'combo', label: 'Un poco de todo', hint: 'Belleza + que el tejido se recupere', result: ['klow', 'ghk-cu', 'bpc-157'] },
     ],
   },
+  beauty_form: {
+    step: 3,
+    total: 3,
+    title: '¿Un péptido o un combo?',
+    lead: 'Los dos se miran para piel. Cambia el formato.',
+    options: [
+      { id: 'solo', label: 'Uno solo', hint: 'GHK-Cu: el de piel, cabello y uñas', result: ['ghk-cu', 'klow'] },
+      { id: 'blend', label: 'Un blend', hint: 'KLOW: varios en un vial, piel + reparación', result: ['klow', 'ghk-cu', 'bpc-157'] },
+    ],
+  },
   health: {
     step: 2,
-    total: 2,
+    total: 3,
     title: 'En salud, ¿qué se siente más cerca?',
     lead: 'No es un diagnóstico: es para orientarte en el catálogo.',
     options: [
-      { id: 'tired', label: 'Cansancio y poca energía', hint: 'Me siento sin pila, me canso fácil', result: ['nad', 'mots-c'] },
+      { id: 'tired', label: 'Cansancio y poca energía', hint: 'Me siento sin pila, me canso fácil', next: 'energy_kind' },
       { id: 'stress', label: 'Estrés o mente nublada', hint: 'Quiero calma, menos ruido mental', result: ['acetyl-selank', 'acetyl-semax'] },
       { id: 'focus', label: 'Enfoque y claridad', hint: 'Memoria, concentración, estar más despierto', result: ['acetyl-semax', 'acetyl-selank'] },
-      { id: 'repair', label: 'Reparar tejido', hint: 'Músculos, tendones, “lo dañado”', result: ['bpc-157', 'ipamorelin', 'klow'] },
-      { id: 'weight', label: 'Peso y apetito', hint: 'Metabolismo, saciedad, composición', result: ['retatrutide', 'tirzepatide', 'cagrilintide'] },
-      { id: 'sleep', label: 'Dormir mejor', hint: 'Sueño más profundo y reparador', result: ['dsip', 'epitalon', 'ipamorelin'] },
+      { id: 'repair', label: 'Reparar tejido', hint: 'Músculos, tendones, “lo dañado”', next: 'repair_kind' },
+      { id: 'weight', label: 'Peso y apetito', hint: 'Metabolismo, saciedad, composición', next: 'weight_kind' },
+      { id: 'sleep', label: 'Dormir mejor', hint: 'Sueño más profundo y reparador', next: 'sleep_kind' },
+    ],
+  },
+  energy_kind: {
+    step: 3,
+    total: 3,
+    title: 'Esa energía, ¿cómo la imaginas?',
+    lead: 'Los dos se miran para “más pila”. Cambia el ángulo.',
+    options: [
+      { id: 'recharge', label: 'Recarga celular', hint: 'Con los años, recuperación, envejecimiento', result: ['nad', 'mots-c'] },
+      { id: 'motor', label: 'Motor y metabolismo', hint: 'Que las células usen mejor el combustible', result: ['mots-c', 'nad'] },
+    ],
+  },
+  repair_kind: {
+    step: 3,
+    total: 3,
+    title: '¿Reparación de tejido o hormona de crecimiento?',
+    lead: 'BPC-157 es “lo dañado”. La otra línea pide GH (recuperación, composición, zona media).',
+    options: [
+      { id: 'tissue', label: 'Tejido dañado', hint: 'Músculos, tendones, ligamentos — que suelde', result: ['bpc-157', 'klow'] },
+      { id: 'gh_entry', label: 'GH de entrada', hint: 'Ipamorelin: selectivo, recuperación y sueño', result: ['ipamorelin', 'cjc-ipamorelin'] },
+      { id: 'gh_combo', label: 'GH en pulsos', hint: 'CJC + Ipamorelin: dos señales juntas', result: ['cjc-ipamorelin', 'ipamorelin'] },
+      { id: 'gh_mid', label: 'Zona media, 2 meses', hint: 'Tesamorelin: el más documentado de esta familia', result: ['tesamorelin', 'tesa-ipa-blend'] },
+      { id: 'gh_max', label: 'El combo más fuerte', hint: 'Tesamorelin + Ipamorelin, unos 2 meses', result: ['tesa-ipa-blend', 'tesamorelin'] },
+    ],
+  },
+  weight_kind: {
+    step: 3,
+    total: 3,
+    title: 'En peso, ¿cuál te llama más?',
+    lead: 'Misma conversación, distinto perfil.',
+    options: [
+      { id: 'potent', label: 'El más potente', hint: 'Retatrutide: tres vías a la vez', result: ['retatrutide', 'tirzepatide', 'cagrilintide'] },
+      { id: 'known', label: 'El más conocido', hint: 'Tirzepatide: dos vías, peso y azúcar', result: ['tirzepatide', 'retatrutide', 'cagrilintide'] },
+      { id: 'full', label: 'Saciedad', hint: 'Cagrilintide: el del “ya comí”', result: ['cagrilintide', 'tirzepatide'] },
+    ],
+  },
+  sleep_kind: {
+    step: 3,
+    total: 3,
+    title: 'Del sueño, ¿qué buscas?',
+    lead: 'No es un somnífero: son líneas distintas.',
+    options: [
+      { id: 'deep', label: 'Dormir más profundo', hint: 'DSIP: el sueño que repara, no solo quedarte dormido', result: ['dsip', 'ipamorelin'] },
+      { id: 'clock', label: 'Reloj interno', hint: 'Epitalon: ritmos y envejecimiento celular', result: ['epitalon', 'dsip'] },
+      { id: 'recover_sleep', label: 'Recuperarme al dormir', hint: 'Ipamorelin: GH, sueño y composición', result: ['ipamorelin', 'dsip'] },
     ],
   },
 };
@@ -158,12 +237,24 @@ const HEADLINES = {
   skin: 'Línea de piel y belleza',
   irritation: 'Línea de calma e inflamación',
   combo: 'Línea de belleza + reparación',
+  solo: 'GHK-Cu — piel, cabello y uñas',
+  blend: 'KLOW — blend de piel y reparación',
   tired: 'Línea de energía celular',
   stress: 'Línea de calma y estrés',
   focus: 'Línea de enfoque y claridad',
-  repair: 'Línea de reparación de tejido',
-  weight: 'Línea de peso y metabolismo',
-  sleep: 'Línea de sueño y descanso',
+  recharge: 'NAD+ — recarga celular',
+  motor: 'MOTS-C — motor y metabolismo',
+  tissue: 'BPC-157 — reparación de tejido',
+  gh_entry: 'Ipamorelin — GH de entrada',
+  gh_combo: 'CJC + Ipamorelin — pulsos de GH',
+  gh_mid: 'Tesamorelin — zona media',
+  gh_max: 'Tesamorelin + Ipamorelin',
+  potent: 'Retatrutide — el más potente',
+  known: 'Tirzepatide — el más conocido',
+  full: 'Cagrilintide — saciedad',
+  deep: 'DSIP — sueño profundo',
+  clock: 'Epitalon — reloj interno',
+  recover_sleep: 'Ipamorelin — recuperación al dormir',
 };
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -179,7 +270,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const step = STEPS[id];
     current = id;
     root.innerHTML = `
-      <p class="quiz-progress mono">Paso ${step.step} de ${step.total}</p>
+      <p class="quiz-progress mono">Paso ${step.step}</p>
       <h2 class="quiz-title">${step.title}</h2>
       <p class="quiz-lead">${step.lead}</p>
       <div class="quiz-options">
