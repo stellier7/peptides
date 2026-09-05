@@ -277,10 +277,50 @@ body.cart-open .cart-fab{ opacity: 0; pointer-events: none; }
   opacity: .35;
   will-change: transform;
 }
-.ambient .helix{
+
+.hero-dna{
   position:absolute;
-  opacity:.16;
+  left: -22%;
+  top: -12%;
+  width: min(78vw, 420px);
+  height: 140%;
+  z-index: 0;
+  pointer-events: none;
   will-change: transform;
+  -webkit-mask-image: linear-gradient(90deg, #000 0%, #000 42%, transparent 86%);
+  mask-image: linear-gradient(90deg, #000 0%, #000 42%, transparent 86%);
+}
+.helix-inner{
+  width: 100%;
+  height: 100%;
+  opacity: .72;
+  transform-origin: 40% 40%;
+  animation: helix-drift 16s ease-in-out infinite;
+}
+.hero-logo-mark{
+  position:absolute;
+  left: 4%;
+  top: 16%;
+  width: clamp(72px, 22vw, 128px);
+  color: var(--violet-600);
+  z-index: 1;
+  pointer-events: none;
+  will-change: transform;
+  filter: drop-shadow(0 10px 24px hsl(261 45% 20% / .28));
+}
+.hero-logo-mark svg{
+  width: 100%;
+  height: auto;
+  animation: lotus-float 10s ease-in-out infinite;
+}
+
+@keyframes helix-drift{
+  0%, 100%{ transform: translateY(0) rotate(-8deg); }
+  50%{ transform: translateY(-28px) rotate(7deg); }
+}
+@keyframes lotus-float{
+  0%, 100%{ transform: translateY(0) rotate(-10deg); }
+  50%{ transform: translateY(-16px) rotate(8deg); }
 }
 
 /* ==========================================================================
@@ -998,6 +1038,21 @@ body.cart-open{ overflow: hidden; }
   .feature-banner .moon{ justify-self:start; width:76px; height:76px; }
   .contact-grid{ grid-template-columns: 1fr; }
   .hero-vial{ display:none; }
+  .hero{ min-height: 78vh; }
+  .hero-dna{
+    left: -28%;
+    top: -6%;
+    width: 92vw;
+    height: 118%;
+    -webkit-mask-image: linear-gradient(90deg, #000 0%, #000 30%, transparent 70%);
+    mask-image: linear-gradient(90deg, #000 0%, #000 30%, transparent 70%);
+  }
+  .helix-inner{ opacity: .85; }
+  .hero-logo-mark{
+    left: 2%;
+    top: 22%;
+    width: clamp(88px, 28vw, 140px);
+  }
 }
 @media (max-width: 760px){
   footer .foot-top{ flex-direction:column; gap:26px; }

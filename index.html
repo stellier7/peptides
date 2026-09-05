@@ -31,17 +31,53 @@
 <!-- ============================= HERO ============================= -->
 <section class="hero">
   <div class="ambient" data-hero-parallax>
-    <div class="blob" data-depth="18" style="width:520px;height:520px;left:-160px;top:-140px;background:radial-gradient(circle,#c9a8f5,transparent 70%);"></div>
-    <div class="blob" data-depth="-14" style="width:420px;height:420px;right:-120px;top:60px;background:radial-gradient(circle,#a6e2ec,transparent 70%);"></div>
-    <svg class="helix" data-depth="10" width="220" height="640" style="right:6%;top:-40px;color:#4c1d95" viewBox="0 0 220 640" fill="none">
-      <path d="M20 0C120 60 20 120 120 180S20 300 120 360 20 480 120 540 20 600 120 640" stroke="currentColor" stroke-width="3"/>
-      <path d="M200 0C100 60 200 120 100 180S200 300 100 360 200 480 100 540 200 600 100 640" stroke="currentColor" stroke-width="3"/>
-      <g stroke="currentColor" stroke-width="2">
-        <path d="M32 20 108 20"/><path d="M32 100 108 100"/><path d="M32 180 108 180"/>
-        <path d="M32 260 108 260"/><path d="M32 340 108 340"/><path d="M32 420 108 420"/>
-        <path d="M32 500 108 500"/><path d="M32 580 108 580"/>
-      </g>
-    </svg>
+    <div class="blob" data-hero-layer data-depth="22" data-parallax="-0.06" style="width:520px;height:520px;left:-160px;top:-140px;background:radial-gradient(circle,#c9a8f5,transparent 70%);"></div>
+    <div class="blob" data-hero-layer data-depth="-16" data-parallax="0.05" style="width:420px;height:420px;right:-120px;top:60px;background:radial-gradient(circle,#a6e2ec,transparent 70%);"></div>
+
+    <div class="hero-dna" data-hero-layer data-depth="18" data-parallax="-0.22">
+      <svg class="helix-inner" viewBox="0 0 240 720" fill="none" aria-hidden="true">
+        <defs>
+          <linearGradient id="strandA" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#6d28d9"/>
+            <stop offset="1" stop-color="#34b3c9"/>
+          </linearGradient>
+          <linearGradient id="strandB" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#34b3c9"/>
+            <stop offset="1" stop-color="#8347e8"/>
+          </linearGradient>
+          <filter id="dnaGlow" x="-20%" y="-5%" width="140%" height="110%">
+            <feGaussianBlur stdDeviation="3" result="b"/>
+            <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+          </filter>
+        </defs>
+        <g filter="url(#dnaGlow)">
+          <path d="M42 8C168 72 168 144 42 216S-84 360 42 432 168 576 42 712" stroke="url(#strandA)" stroke-width="5" stroke-linecap="round"/>
+          <path d="M198 8C72 72 72 144 198 216S324 360 198 432 72 576 198 712" stroke="url(#strandB)" stroke-width="5" stroke-linecap="round"/>
+          <g stroke="#9b7ae8" stroke-width="2.4" opacity=".85">
+            <path d="M58 48 182 48"/><path d="M70 96 170 96"/><path d="M90 144 150 144"/>
+            <path d="M58 192 182 192"/><path d="M70 240 170 240"/><path d="M90 288 150 288"/>
+            <path d="M58 336 182 336"/><path d="M70 384 170 384"/><path d="M90 432 150 432"/>
+            <path d="M58 480 182 480"/><path d="M70 528 170 528"/><path d="M90 576 150 576"/>
+            <path d="M58 624 182 624"/><path d="M70 672 170 672"/>
+          </g>
+          <g fill="#34b3c9">
+            <circle cx="58" cy="48" r="3.2"/><circle cx="182" cy="48" r="3.2"/>
+            <circle cx="58" cy="192" r="3.2"/><circle cx="182" cy="192" r="3.2"/>
+            <circle cx="58" cy="336" r="3.2"/><circle cx="182" cy="336" r="3.2"/>
+            <circle cx="58" cy="480" r="3.2"/><circle cx="182" cy="480" r="3.2"/>
+            <circle cx="58" cy="624" r="3.2"/><circle cx="182" cy="624" r="3.2"/>
+          </g>
+        </g>
+      </svg>
+    </div>
+
+    <div class="hero-logo-mark" data-hero-layer data-depth="-12" data-parallax="-0.1">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" aria-hidden="true">
+        <path d="M12 3c2 2.2 3.4 4.3 3.4 6.6A3.4 3.4 0 0 1 12 13a3.4 3.4 0 0 1-3.4-3.4C8.6 7.3 10 5.2 12 3Z"/>
+        <path d="M6 21c1.6-3.4 3.8-5.2 6-5.2s4.4 1.8 6 5.2"/>
+        <path d="M12 13v3.4"/>
+      </svg>
+    </div>
   </div>
 
   <div class="wrap">
@@ -54,7 +90,7 @@
     </div>
   </div>
 
-  <svg class="hero-vial" data-depth="-22" viewBox="0 0 220 420" fill="none">
+  <svg class="hero-vial" data-hero-layer data-depth="-22" data-parallax="0.08" viewBox="0 0 220 420" fill="none">
     <rect x="70" y="30" width="80" height="40" rx="6" fill="#dcd0f7" stroke="#6d28d9" stroke-width="2"/>
     <rect x="60" y="68" width="100" height="220" rx="18" fill="#f4effd" stroke="#6d28d9" stroke-width="2.5"/>
     <rect x="60" y="150" width="100" height="90" fill="#e4d9fb" opacity=".7"/>

@@ -115,16 +115,15 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  /* ---- ambient scroll parallax (blobs, helix, hero vial, stars) --------*/
-  const parallaxEls = document.querySelectorAll('[data-parallax]');
+  /* ---- ambient scroll parallax (stars, page-header blobs) --------------*/
+  const parallaxEls = document.querySelectorAll('[data-parallax]:not([data-hero-layer])');
   let ticking = false;
 
   const applyParallax = () => {
     const scrollY = window.scrollY;
     parallaxEls.forEach(el => {
       const speed = parseFloat(el.dataset.parallax) || 0.15;
-      const offset = scrollY * speed;
-      el.style.transform = `translateY(${offset}px)`;
+      el.style.transform = `translateY(${scrollY * speed}px)`;
     });
     ticking = false;
   };
@@ -137,18 +136,48 @@ document.addEventListener('DOMContentLoaded', () => {
   }, { passive: true });
   applyParallax();
 
-  /* ---- hero mouse parallax (vial + blobs drift toward cursor) ----------*/
-  const heroLayer = document.querySelector('[data-hero-parallax]');
-  if (heroLayer && window.matchMedia('(pointer: fine)').matches) {
-    document.querySelector('.hero')?.addEventListener('mousemove', (e) => {
-      const rect = e.currentTarget.getBoundingClientRect();
-      const px = (e.clientX - rect.left) / rect.width - 0.5;
-      const py = (e.clientY - rect.top) / rect.height - 0.5;
-      heroLayer.querySelectorAll('[data-depth]').forEach(el => {
-        const depth = parseFloat(el.dataset.depth) || 10;
-        el.style.transform = `translate(${px * depth}px, ${py * depth}px)`;
+  /* ---- hero parallax: scroll + pointer/touch (mobile included) ---------*/
+  const hero = document.querySelector('.hero');
+  const heroLayers = document.querySelectorAll('[data-hero-layer]');
+  if (hero && heroLayers.length) {
+    let pointerX = 0;
+    let pointerY = 0;
+    let heroTick = false;
+
+    const applyHeroLayers = () => {
+      const scrollY = window.scrollY;
+      heroLayers.forEach(el => {
+        const depth = parseFloat(el.dataset.depth) || 0;
+        const speed = parseFloat(el.dataset.parallax) || 0;
+        const x = pointerX * depth;
+        const y = pointerY * depth + scrollY * speed;
+        el.style.transform = `translate3d(${x}px, ${y}px, 0)`;
       });
-    });
+      heroTick = false;
+    };
+
+    const setPointer = (clientX, clientY) => {
+      const rect = hero.getBoundingClientRect();
+      pointerX = (clientX - rect.left) / rect.width - 0.5;
+      pointerY = (clientY - rect.top) / rect.height - 0.5;
+      if (!heroTick) {
+        heroTick = true;
+        window.requestAnimationFrame(applyHeroLayers);
+      }
+    };
+
+    hero.addEventListener('mousemove', (e) => setPointer(e.clientX, e.clientY));
+    hero.addEventListener('touchmove', (e) => {
+      const t = e.touches[0];
+      if (t) setPointer(t.clientX, t.clientY);
+    }, { passive: true });
+    window.addEventListener('scroll', () => {
+      if (!heroTick) {
+        heroTick = true;
+        window.requestAnimationFrame(applyHeroLayers);
+      }
+    }, { passive: true });
+    applyHeroLayers();
   }
 
   /* ---- expandable peptide cards (accordion) -----------------------------*/
