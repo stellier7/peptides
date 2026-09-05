@@ -19,14 +19,20 @@
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M12 3c2 2.2 3.4 4.3 3.4 6.6A3.4 3.4 0 0 1 12 13a3.4 3.4 0 0 1-3.4-3.4C8.6 7.3 10 5.2 12 3Z"/><path d="M6 21c1.6-3.4 3.8-5.2 6-5.2s4.4 1.8 6 5.2"/><path d="M12 13v3.4"/></svg>
       Lotus Peptides
     </a>
-    <nav>
-      <ul class="nav-links">
-        <li><a href="index.html">Catálogo</a></li>
-        <li><a href="informacion.html">Información</a></li>
-        <li><a href="contacto.html">Pedidos</a></li>
-        <li><a href="contacto.html" class="nav-cta">Hacer pedido</a></li>
-      </ul>
-    </nav>
+    <div class="nav-end">
+      <nav>
+        <ul class="nav-links">
+          <li><a href="index.html">Catálogo</a></li>
+          <li><a href="informacion.html">Información</a></li>
+          <li><a href="contacto.html">Pedidos</a></li>
+          <li><a href="contacto.html" class="nav-cta">Hacer pedido</a></li>
+        </ul>
+      </nav>
+      <button type="button" class="cart-btn" data-open-cart aria-label="Abrir carrito">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M6 6h15l-1.5 9h-12z"/><path d="M6 6 5 3H2"/><circle cx="9" cy="20" r="1.3"/><circle cx="18" cy="20" r="1.3"/></svg>
+        <span class="cart-count" data-cart-count hidden>0</span>
+      </button>
+    </div>
   </div>
 </header>
 
@@ -38,7 +44,7 @@
   <div class="wrap" style="position:relative;z-index:2;">
     <span class="hero-eyebrow mono">◆ Pedidos</span>
     <h1 style="margin-top:18px;">Cómo hacer tu pedido</h1>
-    <p>Escríbenos por WhatsApp con el producto y presentación que necesitas. Confirmamos disponibilidad, forma de entrega y pago antes de despachar.</p>
+    <p>Arma tu carrito en el catálogo y mándanos el pedido por WhatsApp. Confirmamos disponibilidad, forma de entrega y pago antes de despachar.</p>
   </div>
 </section>
 
@@ -51,8 +57,8 @@
         <div class="shine"></div>
         <svg width="40" height="40" viewBox="0 0 24 24" fill="#fff"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm5.5 14.2c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .1-1.7-.1-.4-.1-.9-.3-1.6-.6-2.8-1.2-4.6-4-4.7-4.2-.1-.2-1.1-1.5-1.1-2.8 0-1.3.7-2 1-2.2.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5.2.6.7 1.9.8 2 .1.2.1.4 0 .6-.4.8-.8.8-.5 1.3.9 1.6 1.8 2.2 3.2 2.9.2.1.4.1.5-.1.2-.2.7-.8.9-1.1.2-.3.4-.2.6-.1.2.1 1.5.7 1.8.8.3.1.5.2.5.3.1.3.1.7-.1 1.2Z"/></svg>
         <h3>Pedir por WhatsApp</h3>
-        <p>La vía más rápida para consultar disponibilidad y confirmar tu pedido. Indícanos el péptido, la presentación y si prefieres envío o pick-up.</p>
-        <a href="https://wa.me/50400000000?text=Hola%2C%20quiero%20consultar%20disponibilidad%20de%20p%C3%A9ptidos" class="btn btn-primary" target="_blank" rel="noopener">Abrir WhatsApp</a>
+        <p>La vía más rápida: llena el carrito en el catálogo y el checkout abre WhatsApp con tu lista. También puedes escribirnos directo si quieres consultar algo.</p>
+        <a href="https://wa.me/50496784674?text=Hola%2C%20quiero%20consultar%20disponibilidad%20de%20p%C3%A9ptidos" class="btn btn-primary" target="_blank" rel="noopener">Abrir WhatsApp</a>
       </article>
 
       <article class="card3d reveal" style="padding:34px;transition-delay:.06s;">
@@ -79,7 +85,7 @@
       <div class="shine"></div>
       <div class="step-row">
         <div class="step-num mono">1</div>
-        <div><h4>Escríbenos por WhatsApp</h4><p>Cuéntanos qué péptido y presentación te interesa. Puedes revisar el catálogo o las fichas de información antes de escribir.</p></div>
+        <div><h4>Arma tu carrito</h4><p>En el catálogo, toca Agregar en cada vial. Abre el carrito (ícono arriba a la derecha), elige envío o pick-up, y pulsa Pedir por WhatsApp.</p></div>
       </div>
       <div class="step-row">
         <div class="step-num mono">2</div>
@@ -129,5 +135,6 @@
 </footer>
 
 <script src="script.js"></script>
+<script src="cart.js"></script>
 </body>
 </html>

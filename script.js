@@ -100,7 +100,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const body = card.querySelector('.pep-card-body');
     if (!body) return;
     card.addEventListener('click', (e) => {
-      if (e.target.closest('a')) return;
+      if (e.target.closest('a, button, .pep-card-shop')) return;
       const isOpen = card.classList.contains('open');
       // close others in the same group for a tidy single-open accordion
       const group = card.closest('.pep-grid');
