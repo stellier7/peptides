@@ -399,10 +399,6 @@ h1,h2,h3,h4{
   line-height: 1.5;
   transform: translateZ(16px);
 }
-.pep-card-teaser strong{
-  color: var(--violet-700);
-  font-weight: 600;
-}
 .pep-card-name{ display:flex; align-items:center; gap:10px; flex-wrap:wrap; }
 .pep-card-name h4{ font-size: 1.05rem; font-family: var(--font-body); font-weight:600; color: var(--ink); }
 .pep-card-right{ display:flex; align-items:center; gap:14px; flex-shrink:0; }
