@@ -363,6 +363,15 @@ h1,h2,h3,h4{
   transform: translateZ(14px);
 }
 .plan-blurb strong{ color: var(--ink); font-weight: 600; }
+.plan-more{
+  margin: -12px 0 20px;
+  transform: translateZ(14px);
+}
+.plan-more a{
+  color: var(--violet-700); font-weight:600; text-decoration:none;
+  border-bottom: 1px solid var(--violet-200);
+  font-size: 0.92rem;
+}
 .plan-rows{ display:flex; flex-direction:column; }
 .plan-row{
   display:flex; justify-content:space-between; align-items:baseline;
