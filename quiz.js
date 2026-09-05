@@ -269,7 +269,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const paint = (fn) => {
     const y = window.scrollY;
     fn();
-    window.scrollTo(0, y);
+    window.scrollTo({ top: y, left: 0, behavior: 'instant' });
   };
 
   const renderQuestion = (id) => {
