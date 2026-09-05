@@ -1,0 +1,14 @@
+{
+  "redirects": [
+    {
+      "source": "/lotus-peptides-site",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/lotus-peptides-site/:path*",
+      "destination": "/:path*",
+      "permanent": true
+    }
+  ]
+}
