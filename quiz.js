@@ -266,6 +266,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const formatPrice = (n) => `L.${Number(n).toLocaleString('en-US')}`;
 
+  const paint = (fn) => {
+    const y = window.scrollY;
+    fn();
+    window.scrollTo(0, y);
+  };
+
   const renderQuestion = (id) => {
     const step = STEPS[id];
     current = id;
@@ -316,13 +322,12 @@ document.addEventListener('DOMContentLoaded', () => {
   root.addEventListener('click', (e) => {
     if (e.target.closest('[data-quiz-back]')) {
       current = history.pop() || 'start';
-      renderQuestion(current);
+      paint(() => renderQuestion(current));
       return;
     }
     if (e.target.closest('[data-quiz-restart]')) {
       history.length = 0;
-      renderQuestion('start');
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+      paint(() => renderQuestion('start'));
       return;
     }
     const btn = e.target.closest('[data-opt]');
@@ -331,13 +336,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const opt = step.options.find(o => o.id === btn.dataset.opt);
     if (!opt) return;
     history.push(current);
-    if (opt.next) {
-      renderQuestion(opt.next);
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    } else if (opt.result) {
-      renderResults(opt.id, opt.result);
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
+    if (opt.next) paint(() => renderQuestion(opt.next));
+    else if (opt.result) paint(() => renderResults(opt.id, opt.result));
   });
 
   renderQuestion('start');
