@@ -92,14 +92,13 @@ body.menu-open .nav{ z-index: 180; }
   height: 74px;
 }
 .nav-brand{
-  display:flex; align-items:center; gap:12px;
+  display:flex; align-items:center;
   font-family: var(--font-display);
   font-size: 1.15rem;
   color: var(--violet-900);
   text-decoration:none;
   white-space: nowrap;
 }
-.nav-brand svg{ width:30px; height:30px; flex-shrink:0; }
 .nav-links{
   display:flex; align-items:center; gap: 30px;
   list-style:none; margin:0; padding:0;
@@ -1042,7 +1041,6 @@ body.cart-open{ overflow: hidden; }
   .hero-vial{ width: 228px; }
 }
 @media (max-width: 760px){
-  .nav-brand{ font-size: 1.02rem; gap: 8px; }
   footer .foot-top{ flex-direction:column; gap:26px; }
   .cart-line{ grid-template-columns: 1fr auto; }
   .cart-line-sum, .cart-remove{ grid-row: 2; }
