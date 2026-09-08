@@ -1,6 +1,6 @@
 /* ==========================================================================
    Shared interaction layer: scroll reveal, Apple-style 3D tilt on cards,
-   ambient parallax blobs, a pinned hero DNA, and the peptide accordion cards.
+   ambient parallax blobs, and the peptide accordion cards.
    ========================================================================== */
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -135,28 +135,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }, { passive: true });
   applyParallax();
-
-  /* ---- hero DNA: still art, pinned on scroll (clipped by .hero) --------*/
-  const hero = document.querySelector('.hero');
-  const heroPin = document.querySelector('[data-hero-pin]');
-  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  if (hero && heroPin && !reduceMotion) {
-    let heroTick = false;
-    const pinDna = () => {
-      const rect = hero.getBoundingClientRect();
-      if (rect.bottom > 0 && rect.top < window.innerHeight) {
-        heroPin.style.transform = `translate3d(0, ${window.scrollY}px, 0)`;
-      }
-      heroTick = false;
-    };
-    window.addEventListener('scroll', () => {
-      if (!heroTick) {
-        heroTick = true;
-        window.requestAnimationFrame(pinDna);
-      }
-    }, { passive: true });
-    pinDna();
-  }
 
   /* ---- expandable peptide cards (accordion) -----------------------------*/
   document.querySelectorAll('.pep-card').forEach(card => {

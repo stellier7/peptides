@@ -35,7 +35,7 @@
     <div class="blob" style="width:420px;height:420px;right:-120px;top:60px;background:radial-gradient(circle,#a6e2ec,transparent 70%);"></div>
   </div>
 
-  <div class="hero-dna" data-hero-pin aria-hidden="true">
+  <div class="hero-dna" aria-hidden="true">
     <svg class="helix-inner" viewBox="0 0 240 720" fill="none">
       <defs>
         <linearGradient id="strandA" x1="0" y1="0" x2="0" y2="1">
@@ -46,28 +46,22 @@
           <stop offset="0" stop-color="#34b3c9"/>
           <stop offset="1" stop-color="#8347e8"/>
         </linearGradient>
-        <filter id="dnaGlow" x="-20%" y="-5%" width="140%" height="110%">
-          <feGaussianBlur stdDeviation="3" result="b"/>
-          <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
-        </filter>
       </defs>
-      <g filter="url(#dnaGlow)">
-        <path d="M42 8C168 72 168 144 42 216S-84 360 42 432 168 576 42 712" stroke="url(#strandA)" stroke-width="5" stroke-linecap="round"/>
-        <path d="M198 8C72 72 72 144 198 216S324 360 198 432 72 576 198 712" stroke="url(#strandB)" stroke-width="5" stroke-linecap="round"/>
-        <g stroke="#9b7ae8" stroke-width="2.4" opacity=".85">
-          <path d="M58 48 182 48"/><path d="M70 96 170 96"/><path d="M90 144 150 144"/>
-          <path d="M58 192 182 192"/><path d="M70 240 170 240"/><path d="M90 288 150 288"/>
-          <path d="M58 336 182 336"/><path d="M70 384 170 384"/><path d="M90 432 150 432"/>
-          <path d="M58 480 182 480"/><path d="M70 528 170 528"/><path d="M90 576 150 576"/>
-          <path d="M58 624 182 624"/><path d="M70 672 170 672"/>
-        </g>
-        <g fill="#34b3c9">
-          <circle cx="58" cy="48" r="3.2"/><circle cx="182" cy="48" r="3.2"/>
-          <circle cx="58" cy="192" r="3.2"/><circle cx="182" cy="192" r="3.2"/>
-          <circle cx="58" cy="336" r="3.2"/><circle cx="182" cy="336" r="3.2"/>
-          <circle cx="58" cy="480" r="3.2"/><circle cx="182" cy="480" r="3.2"/>
-          <circle cx="58" cy="624" r="3.2"/><circle cx="182" cy="624" r="3.2"/>
-        </g>
+      <path d="M42 8C168 72 168 144 42 216S-84 360 42 432 168 576 42 712" stroke="url(#strandA)" stroke-width="5" stroke-linecap="round"/>
+      <path d="M198 8C72 72 72 144 198 216S324 360 198 432 72 576 198 712" stroke="url(#strandB)" stroke-width="5" stroke-linecap="round"/>
+      <g stroke="#9b7ae8" stroke-width="2.4" opacity=".85">
+        <path d="M58 48 182 48"/><path d="M70 96 170 96"/><path d="M90 144 150 144"/>
+        <path d="M58 192 182 192"/><path d="M70 240 170 240"/><path d="M90 288 150 288"/>
+        <path d="M58 336 182 336"/><path d="M70 384 170 384"/><path d="M90 432 150 432"/>
+        <path d="M58 480 182 480"/><path d="M70 528 170 528"/><path d="M90 576 150 576"/>
+        <path d="M58 624 182 624"/><path d="M70 672 170 672"/>
+      </g>
+      <g fill="#34b3c9">
+        <circle cx="58" cy="48" r="3.2"/><circle cx="182" cy="48" r="3.2"/>
+        <circle cx="58" cy="192" r="3.2"/><circle cx="182" cy="192" r="3.2"/>
+        <circle cx="58" cy="336" r="3.2"/><circle cx="182" cy="336" r="3.2"/>
+        <circle cx="58" cy="480" r="3.2"/><circle cx="182" cy="480" r="3.2"/>
+        <circle cx="58" cy="624" r="3.2"/><circle cx="182" cy="624" r="3.2"/>
       </g>
     </svg>
   </div>
