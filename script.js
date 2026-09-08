@@ -115,26 +115,27 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  /* ---- ambient scroll parallax (stars, page-header blobs) --------------*/
+  /* ---- light scroll parallax (hero DNA, stars, page-header blobs) ------*/
   const parallaxEls = document.querySelectorAll('[data-parallax]');
-  let ticking = false;
-
-  const applyParallax = () => {
-    const scrollY = window.scrollY;
-    parallaxEls.forEach(el => {
-      const speed = parseFloat(el.dataset.parallax) || 0.15;
-      el.style.transform = `translateY(${scrollY * speed}px)`;
-    });
-    ticking = false;
-  };
-
-  window.addEventListener('scroll', () => {
-    if (!ticking) {
-      window.requestAnimationFrame(applyParallax);
-      ticking = true;
-    }
-  }, { passive: true });
-  applyParallax();
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (parallaxEls.length && !reduceMotion) {
+    let ticking = false;
+    const applyParallax = () => {
+      const scrollY = window.scrollY;
+      parallaxEls.forEach(el => {
+        const speed = parseFloat(el.dataset.parallax) || 0.15;
+        el.style.transform = `translate3d(0, ${scrollY * speed}px, 0)`;
+      });
+      ticking = false;
+    };
+    window.addEventListener('scroll', () => {
+      if (!ticking) {
+        ticking = true;
+        window.requestAnimationFrame(applyParallax);
+      }
+    }, { passive: true });
+    applyParallax();
+  }
 
   /* ---- expandable peptide cards (accordion) -----------------------------*/
   document.querySelectorAll('.pep-card').forEach(card => {
