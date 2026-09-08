@@ -477,14 +477,23 @@ body.cart-open .cart-fab{ opacity: 0; pointer-events: none; }
 }
 .plan-rows{ display:flex; flex-direction:column; }
 .plan-row{
-  display:flex; justify-content:space-between; align-items:baseline;
+  display:grid;
+  grid-template-columns: minmax(0, 1fr) auto auto;
+  align-items: center;
+  gap: 10px;
   padding: 12px 0;
   border-top: 1px dashed var(--line);
   transform: translateZ(14px);
 }
 .plan-row:first-child{ border-top:none; }
-.plan-row .label{ font-size:0.96rem; color: var(--ink); }
-.plan-row .price{ font-family: var(--font-mono); color: var(--violet-700); font-size:1.02rem; }
+.plan-row .label{ font-size:0.96rem; color: var(--ink); min-width: 0; }
+.plan-row .price{
+  font-family: var(--font-mono);
+  color: var(--violet-700);
+  font-size:1.02rem;
+  white-space: nowrap;
+  justify-self: end;
+}
 
 /* peptide list / expandable cards */
 .pep-grid{
