@@ -769,6 +769,11 @@ footer nav a:hover{ color:#fff; }
   padding: 0 24px 16px;
   transform: translateZ(16px);
 }
+.pep-card-options{
+  padding: 0 24px 10px;
+  transform: translateZ(16px);
+}
+.pep-card-options .plan-row:first-child{ border-top: 1px dashed var(--line); }
 .plan-row, .kv-row{ align-items: center; }
 
 body.cart-open{ overflow: hidden; }

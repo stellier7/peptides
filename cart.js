@@ -102,7 +102,20 @@ document.addEventListener('DOMContentLoaded', () => {
 
   /* ---- inject add buttons from existing catalog markup ----------------*/
   document.querySelectorAll('.pep-card').forEach(card => {
-    const name = card.querySelector('h4')?.textContent.trim();
+    const product = card.querySelector('h4')?.textContent.trim();
+    const optionRows = card.querySelectorAll('.plan-row');
+    if (optionRows.length) {
+      optionRows.forEach(row => {
+        if (row.querySelector('[data-add-to-cart]')) return;
+        const label = row.querySelector('.label')?.textContent.trim();
+        const price = parsePrice(row.querySelector('.price')?.textContent);
+        if (!product || !label || !price) return;
+        const name = `${product} · ${label}`;
+        row.append(addBtnHtml({ sku: slug(name), name, price }, 'add-btn-sm'));
+      });
+      return;
+    }
+    const name = product;
     const price = parsePrice(card.querySelector('.pep-card-price')?.textContent);
     if (!name || !price) return;
     if (card.querySelector('[data-add-to-cart]')) return;

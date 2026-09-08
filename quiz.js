@@ -101,19 +101,19 @@ const PEPTIDES = {
     price: 1750,
   },
   tesamorelin: {
-    name: 'Tesamorelin · 6 viales',
+    name: 'Tesamorelin · 6 viales (2 meses)',
     blurb: 'El más documentado para hormona de crecimiento y grasa de la zona media. Unos 2 meses.',
     ficha: 'informacion.html#tesamorelin',
     catalog: 'index.html#tesamorelin',
-    sku: 'tesamorelin',
+    sku: 'tesamorelin-6-viales-2-meses',
     price: 9000,
   },
   'tesa-ipa-blend': {
-    name: 'Tesamorelin + Ipamorelin',
+    name: 'Tesamorelin 10 mg + Ipamorelin 3 mg · 6 viales (2 meses)',
     blurb: 'El combo más fuerte de “pide GH” del catálogo, para unos 2 meses.',
     ficha: 'informacion.html#tesa-ipa-blend',
     catalog: 'index.html#tesa-ipa-blend',
-    sku: 'tesa-ipa-blend',
+    sku: 'tesamorelin-10-mg-ipamorelin-3-mg-6-viales-2-meses',
     price: 11000,
   },
   retatrutide: {
