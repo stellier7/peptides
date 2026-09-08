@@ -1,4 +1,4 @@
-# Lotus Peptides — sitio catálogo
+# Glow Mode Peptides — sitio catálogo
 
 Sitio estático (HTML/CSS/JS puro, sin build step) con 3 páginas:
 

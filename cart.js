@@ -61,7 +61,7 @@ const setQty = (state, sku, qty) => {
 
 const buildWhatsAppUrl = (state) => {
   const lines = [
-    'Hola, quiero hacer un pedido:',
+    'Hola, quiero hacer un pedido en Glow Mode Peptides:',
     '',
     ...state.items.map(i => `• ${i.qty}× ${i.name} — ${formatPrice(i.price * i.qty)}`),
     '',
