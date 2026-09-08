@@ -249,19 +249,6 @@ body.cart-open .cart-fab{ opacity: 0; pointer-events: none; }
 .cart-count[hidden]{ display:none !important; }
 
 /* ==========================================================================
-   RESEARCH-USE BANNER — persistent, never buried
-   ========================================================================== */
-.compliance-bar{
-  background: var(--violet-900);
-  color: #d9cdfa;
-  font-size: 0.78rem;
-  letter-spacing: .03em;
-  text-align:center;
-  padding: 8px 16px;
-}
-.compliance-bar strong{ color:#fff; }
-
-/* ==========================================================================
    PARALLAX / AMBIENT BACKDROP
    ========================================================================== */
 .ambient{
