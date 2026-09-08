@@ -1,6 +1,6 @@
 /* ==========================================================================
    Shared interaction layer: scroll reveal, Apple-style 3D tilt on cards,
-   ambient parallax blobs, and the peptide accordion cards.
+   ambient parallax blobs, a pinned hero DNA, and the peptide accordion cards.
    ========================================================================== */
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -116,7 +116,7 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   /* ---- ambient scroll parallax (stars, page-header blobs) --------------*/
-  const parallaxEls = document.querySelectorAll('[data-parallax]:not([data-hero-layer])');
+  const parallaxEls = document.querySelectorAll('[data-parallax]');
   let ticking = false;
 
   const applyParallax = () => {
@@ -136,48 +136,26 @@ document.addEventListener('DOMContentLoaded', () => {
   }, { passive: true });
   applyParallax();
 
-  /* ---- hero parallax: scroll + pointer/touch (mobile included) ---------*/
+  /* ---- hero DNA: still art, pinned on scroll (clipped by .hero) --------*/
   const hero = document.querySelector('.hero');
-  const heroLayers = document.querySelectorAll('[data-hero-layer]');
-  if (hero && heroLayers.length) {
-    let pointerX = 0;
-    let pointerY = 0;
+  const heroPin = document.querySelector('[data-hero-pin]');
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (hero && heroPin && !reduceMotion) {
     let heroTick = false;
-
-    const applyHeroLayers = () => {
-      const scrollY = window.scrollY;
-      heroLayers.forEach(el => {
-        const depth = parseFloat(el.dataset.depth) || 0;
-        const speed = parseFloat(el.dataset.parallax) || 0;
-        const x = pointerX * depth;
-        const y = pointerY * depth + scrollY * speed;
-        el.style.transform = `translate3d(${x}px, ${y}px, 0)`;
-      });
+    const pinDna = () => {
+      const rect = hero.getBoundingClientRect();
+      if (rect.bottom > 0 && rect.top < window.innerHeight) {
+        heroPin.style.transform = `translate3d(0, ${window.scrollY}px, 0)`;
+      }
       heroTick = false;
     };
-
-    const setPointer = (clientX, clientY) => {
-      const rect = hero.getBoundingClientRect();
-      pointerX = (clientX - rect.left) / rect.width - 0.5;
-      pointerY = (clientY - rect.top) / rect.height - 0.5;
-      if (!heroTick) {
-        heroTick = true;
-        window.requestAnimationFrame(applyHeroLayers);
-      }
-    };
-
-    hero.addEventListener('mousemove', (e) => setPointer(e.clientX, e.clientY));
-    hero.addEventListener('touchmove', (e) => {
-      const t = e.touches[0];
-      if (t) setPointer(t.clientX, t.clientY);
-    }, { passive: true });
     window.addEventListener('scroll', () => {
       if (!heroTick) {
         heroTick = true;
-        window.requestAnimationFrame(applyHeroLayers);
+        window.requestAnimationFrame(pinDna);
       }
     }, { passive: true });
-    applyHeroLayers();
+    pinDna();
   }
 
   /* ---- expandable peptide cards (accordion) -----------------------------*/
