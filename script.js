@@ -115,7 +115,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  /* ---- light scroll parallax (stars, page-header blobs) ----------------*/
+  /* ---- light scroll parallax (hero media, stars, page-header blobs) ---*/
   const parallaxEls = document.querySelectorAll('[data-parallax]');
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   if (parallaxEls.length && !reduceMotion) {
@@ -124,7 +124,13 @@ document.addEventListener('DOMContentLoaded', () => {
       const scrollY = window.scrollY;
       parallaxEls.forEach(el => {
         const speed = parseFloat(el.dataset.parallax) || 0.15;
-        el.style.transform = `translate3d(0, ${scrollY * speed}px, 0)`;
+        // Cap hero travel so deep scrolls don't yank layers too far.
+        const maxTravel = el.classList.contains('hero-media-shift') ? 180
+          : el.classList.contains('hero-veil') ? 80
+          : el.classList.contains('hero-copy') ? 48
+          : Infinity;
+        const y = Math.max(-maxTravel, Math.min(maxTravel, scrollY * speed));
+        el.style.transform = `translate3d(0, ${y}px, 0)`;
       });
       ticking = false;
     };
