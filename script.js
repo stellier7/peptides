@@ -115,7 +115,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  /* ---- light scroll parallax (hero DNA, stars, page-header blobs) ------*/
+  /* ---- light scroll parallax (stars, page-header blobs) ----------------*/
   const parallaxEls = document.querySelectorAll('[data-parallax]');
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   if (parallaxEls.length && !reduceMotion) {
