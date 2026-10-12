@@ -7,7 +7,7 @@
 const PEPTIDES = {
   'ghk-cu': {
     name: 'GHK-Cu 50 mg',
-    blurb: 'Péptido de cobre de la juventud: colágeno, elastina, piel más firme y cabello más denso.',
+    blurb: 'Péptido de cobre de la juventud: colágeno y elastina; piel más luminosa, firme y uniforme; cabello más denso.',
     ficha: 'informacion.html#ghk-cu',
     catalog: 'index.html#ghk-cu',
     sku: 'ghk-cu',
@@ -15,7 +15,7 @@ const PEPTIDES = {
   },
   klow: {
     name: 'KLOW Blend',
-    blurb: 'GHK-Cu, KPV, TB-500 y BPC-157: reparación total de tejidos, piel e inflamación en un vial.',
+    blurb: 'Cuatro péptidos (GHK-Cu, KPV, TB-500, BPC-157): reparación total de tejidos, piel e inflamación en un vial.',
     ficha: 'informacion.html#klow',
     catalog: 'index.html#klow',
     sku: 'klow',
@@ -23,7 +23,7 @@ const PEPTIDES = {
   },
   kpv: {
     name: 'KPV 10 mg',
-    blurb: 'Antiinflamatorio natural de 3 aminoácidos: intestino calmado y piel menos reactiva.',
+    blurb: 'Antiinflamatorio natural de 3 aminoácidos: inflamación intestinal, piel menos reactiva y acción antimicrobiana.',
     ficha: 'informacion.html#kpv',
     catalog: 'index.html#kpv',
     sku: 'kpv',
@@ -31,7 +31,7 @@ const PEPTIDES = {
   },
   'bpc-157': {
     name: 'BPC-157 10 mg',
-    blurb: 'Estrella de la recuperación: tendones, ligamentos, músculo; también protege estómago e intestino.',
+    blurb: 'Estrella de la recuperación (favorito de atletas): tendones, ligamentos, músculo; también protege estómago e intestino.',
     ficha: 'informacion.html#bpc-157',
     catalog: 'index.html#bpc-157',
     sku: 'bpc-157',
@@ -47,7 +47,7 @@ const PEPTIDES = {
   },
   'mots-c': {
     name: 'MOTS-C 20 mg',
-    blurb: '“Ejercicio en un vial”: glucosa, energía, resistencia y un metabolismo más joven.',
+    blurb: '“Ejercicio en un vial”: mejora uso de glucosa e insulina, energía, resistencia y un metabolismo más joven.',
     ficha: 'informacion.html#mots-c',
     catalog: 'index.html#mots-c',
     sku: 'mots-c',
@@ -63,7 +63,7 @@ const PEPTIDES = {
   },
   'acetyl-selank': {
     name: 'Acetyl Selank',
-    blurb: 'Ansiolítico y regulador del ánimo: menos ansiedad, más resiliencia y calma con enfoque.',
+    blurb: 'Ansiolítico y regulador del ánimo: menos ansiedad y estrés, más resiliencia, calma y bienestar emocional.',
     ficha: 'informacion.html#acetyl-selank',
     catalog: 'index.html#acetyl-selank',
     sku: 'acetyl-selank',
@@ -95,7 +95,7 @@ const PEPTIDES = {
   },
   ipamorelin: {
     name: 'Ipamorelin 10 mg',
-    blurb: 'GH limpia y selectiva — ideal para empezar: sueño, recuperación y tono muscular.',
+    blurb: 'GH limpia y selectiva (sin subir cortisol ni ansiedad) — ideal para empezar: sueño, recuperación y tono.',
     ficha: 'informacion.html#ipamorelin',
     catalog: 'index.html#ipamorelin',
     sku: 'ipamorelin',
@@ -103,7 +103,7 @@ const PEPTIDES = {
   },
   'cjc-ipamorelin': {
     name: 'CJC sin DAC + Ipamorelin 5/5 mg',
-    blurb: 'Combo clásico de GH: pulsos más fuertes; composición, sueño y recuperación.',
+    blurb: 'Combo clásico de GH: pulsos más fuertes y naturales; composición, sueño y recuperación.',
     ficha: 'informacion.html#cjc-ipamorelin',
     catalog: 'index.html#cjc-ipamorelin',
     sku: 'cjc-ipamorelin',
@@ -111,7 +111,7 @@ const PEPTIDES = {
   },
   tesamorelin: {
     name: 'Tesamorelin 10 mg',
-    blurb: 'Estimula tu propia GH; el más documentado para grasa abdominal profunda.',
+    blurb: 'Estimula tu propia GH; aprobado en EE. UU. (Egrifta) — grasa abdominal profunda e IGF-1.',
     ficha: 'informacion.html#tesamorelin',
     catalog: 'index.html#tesamorelin',
     sku: 'tesamorelin',
@@ -151,7 +151,7 @@ const PEPTIDES = {
   },
   'youth-code': {
     name: 'Youth Code (Firmora)',
-    blurb: 'Suero para rostro y cuello: suaviza líneas; más firmeza y colágeno, sin agujas.',
+    blurb: 'Suero para rostro y cuello con GHK-Cu, Snap-8 y Matrixyl: suaviza líneas; más firmeza y colágeno, sin agujas.',
     ficha: 'informacion.html#youth-code',
     catalog: 'index.html#youth-code',
     sku: 'youth-code',
@@ -159,7 +159,7 @@ const PEPTIDES = {
   },
   'root-code': {
     name: 'Root Code (Follicara)',
-    blurb: 'Suero para cuero cabelludo: estimula el folículo; cabello más denso y fuerte.',
+    blurb: 'Suero para cuero cabelludo con AHK-Cu y GHK-Cu: estimula el folículo; cabello más denso y fuerte.',
     ficha: 'informacion.html#root-code',
     catalog: 'index.html#root-code',
     sku: 'root-code',
@@ -167,7 +167,7 @@ const PEPTIDES = {
   },
   'pt-141': {
     name: 'PT-141 10 mg',
-    blurb: 'Despierta el deseo desde el cerebro: libido en mujeres y hombres; actúa en el deseo, no solo en lo físico.',
+    blurb: 'Despierta el deseo desde el cerebro; aprobado en EE. UU. (Vyleesi). Libido en mujeres y hombres; efecto rápido.',
     ficha: 'informacion.html#pt-141',
     catalog: 'index.html#pt-141',
     sku: 'pt-141',
@@ -175,19 +175,19 @@ const PEPTIDES = {
   },
   retatrutide: {
     name: 'Retatrutide',
-    blurb: 'Triple agonista (GLP-1, GIP, glucagón): el más potente; apetito, antojos y hasta ~29% de pérdida de peso en estudios.',
+    blurb: 'Triple agonista (GLP-1, GIP, glucagón): apetito, antojos y grasa (incluida la del hígado); hasta ~29% en 48 semanas en estudios.',
     ficha: 'informacion.html#retatrutide',
     catalog: 'index.html#retatrutide-tirzepatide',
   },
   tirzepatide: {
     name: 'Tirzepatide',
-    blurb: 'Doble acción GLP-1/GIP (Mounjaro / Zepbound): saciedad, glucosa y ~20% de pérdida de peso en estudios.',
+    blurb: 'Doble acción GLP-1/GIP (Mounjaro / Zepbound): saciedad, glucosa, sensibilidad a la insulina y ~20% de pérdida de peso en estudios.',
     ficha: 'informacion.html#tirzepatide',
     catalog: 'index.html#retatrutide-tirzepatide',
   },
   cagrilintide: {
     name: 'Cagrilintide 5 mg',
-    blurb: 'Amilina de la saciedad: te llena más y por más tiempo; potencia Reta o Tirze.',
+    blurb: 'Amilina de la saciedad: te llena más y por más tiempo; potencia Reta o Tirze y ayuda a romper estancamientos.',
     ficha: 'informacion.html#cagrilintide',
     catalog: 'index.html#cagrilintide-5',
     sku: 'cagrilintide-5',
@@ -195,7 +195,7 @@ const PEPTIDES = {
   },
   eloralintide: {
     name: 'Eloralintide 5 mg',
-    blurb: 'Nueva amilina (Eli Lilly): saciedad potente; sola o sumada a Reta / Tirze para romper estancamientos.',
+    blurb: 'Nueva amilina (Eli Lilly, fase 2 ~20%): saciedad potente; sola o sumada a Reta / Tirze para romper estancamientos.',
     ficha: 'informacion.html#eloralintide',
     catalog: 'index.html#eloralintide-5',
     sku: 'eloralintide-5',
