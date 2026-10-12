@@ -67,7 +67,7 @@ const buildWhatsAppUrl = (state) => {
     '',
     `Subtotal: ${formatPrice(subtotal(state))}`,
     state.delivery === 'pickup'
-      ? 'Entrega: pick-up (Gratis) — Blvd. Morazán o Loarque'
+      ? 'Entrega: pick-up (Gratis) — Bulevar Morazán'
       : `Entrega: envío — ${formatPrice(SHIPPING_LEMPIRAS)}`,
     `Total: ${formatPrice(subtotal(state) + shipping(state))}`,
     '',
